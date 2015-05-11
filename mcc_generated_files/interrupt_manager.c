@@ -53,18 +53,10 @@ void TMR2_CallBack( void);
 
 void interrupt INTERRUPT_InterruptManager (void)
 {
-   // interrupt handler
-//    if(PIE1bits.TMR2IE == 1 && PIR1bits.TMR2IF == 1)
-//    {
     // clear the TMR2 interrupt flag
     PIR1bits.TMR2IF = 0;
 
-    TMR2_CallBack();    // add your TMR2 interrupt custom code
-//    }
-//    else
-//    {
-//        Unhandled Interrupt
-//    }
+    TMR2_CallBack();    //  in AudioDAC.c
 }
 /**
  End of File

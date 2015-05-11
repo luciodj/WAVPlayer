@@ -13,12 +13,12 @@
   @Description
     This header file provides APIs for TMR2.
     Generation Information :
-        Product Revision  :  MPLAB® Code Configurator - v2.10.3
+        Product Revision  :  MPLAB® Code Configurator - v2.25
         Device            :  PIC16F1709
         Driver Version    :  2.00
     The generated drivers are tested against the following:
         Compiler          :  XC8 v1.34
-        MPLAB             :  MPLAB X 2.26
+        MPLAB             :  MPLAB X v2.35 or v3.00
 */
 
 /*
@@ -87,7 +87,7 @@ SUBSTITUTE GOODS, TECHNOLOGY, SERVICES, OR ANY CLAIMS BY THIRD PARTIES
     None
 
   @Comment
-    Set for interrupt at 22050 Hz
+    Set for interrupt at 44100 Hz
 
   @Example
     <code>

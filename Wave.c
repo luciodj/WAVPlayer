@@ -8,7 +8,7 @@
 #include <xc.h>
 #include <stdlib.h>
 #include <string.h>
-#include "AudioPWM.h"
+#include "AudioDAC.h"
 #include "SDMMC.h"
 #include "fileio.h"
 #include "MCC_Generated_Files/mcc.h"
@@ -88,14 +88,14 @@ unsigned long InitWAV( MFILE * fp)
     // 8. compute the period and adjust the bit rate
     rate = wav.srate;          // r = samples per second
     skip = 1;                  // skip factor to reduce noise
-    while ( rate < 22050)
+    while ( rate < 44100)
     {
         rate <<= 1;            // divide sample rate by two
         skip <<= 1;            // multiply skip by two
     }
 
     // 9. check if the sample rate compatible 
-    if ( rate > 22050)
+    if ( rate > 44100)
     {
         fcloseM( fp);
         return FALSE;

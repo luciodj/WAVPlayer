@@ -13,12 +13,12 @@
   Description:
     This header file provides implementations for pin APIs for all pins selected in the GUI.
     Generation Information :
-        Product Revision  :  MPLAB® Code Configurator - v2.10.3
+        Product Revision  :  MPLAB® Code Configurator - v2.25
         Device            :  PIC16F1709
         Driver Version    :  1.02
     The generated drivers are tested against the following:
         Compiler          :  XC8 v1.34
-        MPLAB             :  MPLAB X 2.26
+        MPLAB             :  MPLAB X v2.35 or v3.00
 */
 
 /*
@@ -56,16 +56,18 @@ void PIN_MANAGER_Initialize(void)
     WPUA = 0x00;
 
     LATB = 0x00;
-    TRISB = 0x30;
+    TRISB = 0xB0;
     ANSELB = 0x20;
     WPUB = 0x00;
 
     LATC = 0x00;
-    TRISC = 0x70;
+    TRISC = 0x68;
     ANSELC = 0x40;
     WPUC = 0x00;
 
     OPTION_REGbits.nWPUEN = 0x01;
+
+        
     bool state = GIE;
     GIE = 0;
     PPSLOCK = 0x55;

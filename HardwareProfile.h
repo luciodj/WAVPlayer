@@ -34,9 +34,9 @@
     // MDD SPI Configuration
 
     // Description: SD-SPI Chip Select Output bit
-    #define SD_CS               LATBbits.LATB7
+    #define SD_CS               LATCbits.LATC4
     // Description: SD-SPI Chip Select TRIS bit
-    #define SD_CS_TRIS          TRISBbits.TRISB7
+    #define SD_CS_TRIS          TRISCbits.TRISC4
 
     // Description: SD-SPI Card Detect Input bit
     #define SD_CD               0

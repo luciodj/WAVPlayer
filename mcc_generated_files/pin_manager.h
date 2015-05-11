@@ -13,12 +13,12 @@
   @Description:
     This header file provides implementations for pin APIs for all pins selected in the GUI.
     Generation Information :
-        Product Revision  :  MPLAB® Code Configurator - v2.10.3
+        Product Revision  :  MPLAB® Code Configurator - v2.25
         Device            :  PIC16F1709
         Version           :  1.01
     The generated drivers are tested against the following:
         Compiler          :  XC8 v1.34
-        MPLAB             :  MPLAB X 2.26
+        MPLAB             :  MPLAB X v2.35 or v3.00
 */
 
 /*
@@ -124,20 +124,6 @@ SUBSTITUTE GOODS, TECHNOLOGY, SERVICES, OR ANY CLAIMS BY THIRD PARTIES
 
 #define SCK_SetPullup()    do { WPUB6 = 1; } while(0)
 #define SCK_ResetPullup()   do { WPUB6 = 0; } while(0)
-// get/set CS aliases
-#define CS_TRIS               TRISB7
-#define CS_LAT                LATB7
-#define CS_PORT               RB7
-#define CS_WPU                WPUB7
-#define CS_SetHigh()    do { LATB7 = 1; } while(0)
-#define CS_SetLow()   do { LATB7 = 0; } while(0)
-#define CS_Toggle()   do { LATB7 = ~LATB7; } while(0)
-#define CS_GetValue()         RB7
-#define CS_SetDigitalInput()    do { TRISB7 = 1; } while(0)
-#define CS_SetDigitalOutput()   do { TRISB7 = 0; } while(0)
-
-#define CS_SetPullup()    do { WPUB7 = 1; } while(0)
-#define CS_ResetPullup()   do { WPUB7 = 0; } while(0)
 // get/set LED0 aliases
 #define LED0_TRIS               TRISC0
 #define LED0_LAT                LATC0
@@ -206,6 +192,20 @@ SUBSTITUTE GOODS, TECHNOLOGY, SERVICES, OR ANY CLAIMS BY THIRD PARTIES
 #define LED3_ResetPullup()   do { WPUC3 = 0; } while(0)
 #define LED3_SetAnalogMode()   do { ANSC3 = 1; } while(0)
 #define LED3_SetDigitalMode()   do { ANSC3 = 0; } while(0)
+// get/set CS aliases
+#define CS_TRIS               TRISC4
+#define CS_LAT                LATC4
+#define CS_PORT               RC4
+#define CS_WPU                WPUC4
+#define CS_SetHigh()    do { LATC4 = 1; } while(0)
+#define CS_SetLow()   do { LATC4 = 0; } while(0)
+#define CS_Toggle()   do { LATC4 = ~LATC4; } while(0)
+#define CS_GetValue()         RC4
+#define CS_SetDigitalInput()    do { TRISC4 = 1; } while(0)
+#define CS_SetDigitalOutput()   do { TRISC4 = 0; } while(0)
+
+#define CS_SetPullup()    do { WPUC4 = 1; } while(0)
+#define CS_ResetPullup()   do { WPUC4 = 0; } while(0)
 // get/set SDO aliases
 #define SDO_TRIS               TRISC7
 #define SDO_LAT                LATC7

@@ -13,12 +13,12 @@
   @Description:
     This header file provides implementations for driver APIs for all modules selected in the GUI.
     Generation Information :
-        Product Revision  :  MPLAB® Code Configurator - v2.10.3
+        Product Revision  :  MPLAB® Code Configurator - v2.25
         Device            :  PIC16F1709
         Version           :  1.02
     The generated drivers are tested against the following:
         Compiler          :  XC8 v1.34
-        MPLAB             :  MPLAB X 2.26
+        MPLAB             :  MPLAB X v2.35 or v3.00
 */
 
 /*
@@ -55,7 +55,7 @@ SUBSTITUTE GOODS, TECHNOLOGY, SERVICES, OR ANY CLAIMS BY THIRD PARTIES
 #include "spi.h"
 #include "dac.h"
 
-#define _XTAL_FREQ  16000000
+#define _XTAL_FREQ  32000000
 
 /**
  * @Param

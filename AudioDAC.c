@@ -5,7 +5,7 @@
 ** 12/01/07 AudioPWM.c v1.2 All buffers unsigned char, no_auto_psv
 ** 14/04/15 v2.0 Modified to use the PIC16F170x 8-bit DAC
 */
-#include "AudioPWM.h"
+#include "AudioDAC.h"
 
 // global definitions
 char           CurBuf;       // index of buffer in use

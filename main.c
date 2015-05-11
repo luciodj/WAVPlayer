@@ -40,14 +40,16 @@ void main(void)
 
             entry = 0;
 
-            // look for a specific WAV file
+            // look for a  W22 file
             while ( (fp = ffindM( "W22", &entry)) != NULL)
             {
-                LED1_LAT = 1;       // turn on LED0 if mount successful
+                LED0_LAT = 0;       // turn off lED0 to save power
+                LED1_LAT = 1;       // turn on LED1 if mount successful
                 // wait for button press
                 while( SW1_GetValue());
                 // wait for button release
                 while( !SW1_GetValue());
+                LED1_LAT = 0;       // turn off LED1 to save power
 
                 lc = InitWAV( fp);
                 Play( fp, lc);

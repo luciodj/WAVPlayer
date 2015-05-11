@@ -13,12 +13,12 @@
   @Description:
     This header file provides implementations for driver APIs for all modules selected in the GUI.
     Generation Information :
-        Product Revision  :  MPLAB® Code Configurator - v2.10.3
+        Product Revision  :  MPLAB® Code Configurator - v2.25
         Device            :  PIC16F1709
         Driver Version    :  1.02
     The generated drivers are tested against the following:
         Compiler          :  XC8 v1.34
-        MPLAB             :  MPLAB X 2.26
+        MPLAB             :  MPLAB X v2.35 or v3.00
 */
 
 /*
@@ -51,8 +51,8 @@ SUBSTITUTE GOODS, TECHNOLOGY, SERVICES, OR ANY CLAIMS BY THIRD PARTIES
 #pragma config BOREN = ON    // Brown-out Reset Enable->Brown-out Reset enabled
 #pragma config PWRTE = OFF    // Power-up Timer Enable->PWRT disabled
 #pragma config FOSC = INTOSC    // Oscillator Selection Bits->INTOSC oscillator: I/O function on CLKIN pin
-#pragma config FCMEN = OFF    // Fail-Safe Clock Monitor Enable->Fail-Safe Clock Monitor is disabled
-#pragma config MCLRE = OFF    // MCLR Pin Function Select->MCLR/VPP pin function is digital input
+#pragma config FCMEN = ON    // Fail-Safe Clock Monitor Enable->Fail-Safe Clock Monitor is enabled
+#pragma config MCLRE = ON    // MCLR Pin Function Select->MCLR/VPP pin function is MCLR
 #pragma config CP = OFF    // Flash Program Memory Code Protection->Program memory code protection is disabled
 #pragma config WDTE = OFF    // Watchdog Timer Enable->WDT disabled
 #pragma config CLKOUTEN = OFF    // Clock Out Enable->CLKOUT function is disabled. I/O or oscillator function on the CLKOUT pin
@@ -80,14 +80,18 @@ void SYSTEM_Initialize(void)
 
 void OSCILLATOR_Initialize(void)
 {
-    // SPLLEN disabled; SCS INTOSC; IRCF 16MHz_HF; 
-    OSCCON = 0x7A;
+    // SPLLEN enabled; SCS FOSC; IRCF 8MHz_HF; 
+    OSCCON = 0xF0;
     // OSTS intosc; HFIOFR disabled; SOSCR disabled; HFIOFS not0.5percent_acc; PLLR disabled; MFIOFR disabled; HFIOFL not2percent_acc; LFIOFR disabled; 
     OSCSTAT = 0x00;
     // TUN 0x0; 
     OSCTUNE = 0x00;
     // Set the secondary oscillator
     
+    // Wait for PLL to stabilize
+    while(PLLR == 0)
+    {
+    }
 }
 
 /**
