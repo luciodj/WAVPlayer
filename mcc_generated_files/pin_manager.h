@@ -8,18 +8,18 @@
     pin_manager.h
 
   @Summary:
-    This is the Pin Manager file generated using MPLAB® Code Configurator
+    This is the Pin Manager file generated using MPLABï¿½ Code Configurator
 
   @Description:
     This header file provides implementations for pin APIs for all pins selected in the GUI.
     Generation Information :
-        Product Revision  :  MPLAB® Code Configurator - v2.25
+        Product Revision  :  MPLABï¿½ Code Configurator - v2.25.1
         Device            :  PIC16F1709
         Version           :  1.01
     The generated drivers are tested against the following:
         Compiler          :  XC8 v1.34
         MPLAB             :  MPLAB X v2.35 or v3.00
-*/
+ */
 
 /*
 Copyright (c) 2013 - 2015 released Microchip Technology Inc.  All rights reserved.
@@ -42,7 +42,7 @@ INCLUDING BUT NOT LIMITED TO ANY INCIDENTAL, SPECIAL, INDIRECT, PUNITIVE OR
 CONSEQUENTIAL DAMAGES, LOST PROFITS OR LOST DATA, COST OF PROCUREMENT OF
 SUBSTITUTE GOODS, TECHNOLOGY, SERVICES, OR ANY CLAIMS BY THIRD PARTIES
 (INCLUDING BUT NOT LIMITED TO ANY DEFENSE THEREOF), OR OTHER SIMILAR COSTS.
-*/
+ */
 
 #ifndef PIN_MANAGER_H
 #define PIN_MANAGER_H
@@ -59,23 +59,6 @@ SUBSTITUTE GOODS, TECHNOLOGY, SERVICES, OR ANY CLAIMS BY THIRD PARTIES
 #define PULL_UP_ENABLED      1
 #define PULL_UP_DISABLED     0
 
-// get/set DACOUT1 aliases
-#define DACOUT1_TRIS               TRISA0
-#define DACOUT1_LAT                LATA0
-#define DACOUT1_PORT               RA0
-#define DACOUT1_WPU                WPUA0
-#define DACOUT1_ANS                ANSA0
-#define DACOUT1_SetHigh()    do { LATA0 = 1; } while(0)
-#define DACOUT1_SetLow()   do { LATA0 = 0; } while(0)
-#define DACOUT1_Toggle()   do { LATA0 = ~LATA0; } while(0)
-#define DACOUT1_GetValue()         RA0
-#define DACOUT1_SetDigitalInput()    do { TRISA0 = 1; } while(0)
-#define DACOUT1_SetDigitalOutput()   do { TRISA0 = 0; } while(0)
-
-#define DACOUT1_SetPullup()    do { WPUA0 = 1; } while(0)
-#define DACOUT1_ResetPullup()   do { WPUA0 = 0; } while(0)
-#define DACOUT1_SetAnalogMode()   do { ANSA0 = 1; } while(0)
-#define DACOUT1_SetDigitalMode()   do { ANSA0 = 0; } while(0)
 // get/set SW1 aliases
 #define SW1_TRIS               TRISA2
 #define SW1_LAT                LATA2
@@ -234,7 +217,7 @@ SUBSTITUTE GOODS, TECHNOLOGY, SERVICES, OR ANY CLAIMS BY THIRD PARTIES
  * @Example
     PIN_MANAGER_Initialize();
  */
-void PIN_MANAGER_Initialize (void);
+void PIN_MANAGER_Initialize(void);
 
 /**
  * @Param
@@ -251,4 +234,4 @@ void PIN_MANAGER_IOC(void);
 #endif // PIN_MANAGER_H
 /**
  End of File
-*/
+ */

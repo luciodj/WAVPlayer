@@ -1,27 +1,25 @@
 /**
-  Generated Interrupt Manager Source File
+  FVR Generated Driver File
 
-  @Company:
+  @Company
     Microchip Technology Inc.
 
-  @File Name:
-    interrupt_manager.c
+  @File Name
+    fvr.c
 
-  @Summary:
-    This is the Interrupt Manager file generated using MPLAB� Code Configurator
+  @Summary
+    This is the generated driver implementation file for the FVR driver using MPLAB� Code Configurator
 
-  @Description:
-    This header file provides implementations for global interrupt handling.
-    For individual peripheral handlers please see the peripheral driver for
-    all modules selected in the GUI.
+  @Description
+    This source file provides APIs for FVR.
     Generation Information :
-        Product Revision  :  MPLAB� Code Configurator - v2.10.3
+        Product Revision  :  MPLAB� Code Configurator - v2.25.1
         Device            :  PIC16F1709
-        Driver Version    :  1.02
+        Driver Version    :  2.00
     The generated drivers are tested against the following:
         Compiler          :  XC8 v1.34
-        MPLAB             :  MPLAB X 2.26
-*/
+        MPLAB             :  MPLAB X v2.35 or v3.00
+ */
 
 /*
 Copyright (c) 2013 - 2015 released Microchip Technology Inc.  All rights reserved.
@@ -44,20 +42,28 @@ INCLUDING BUT NOT LIMITED TO ANY INCIDENTAL, SPECIAL, INDIRECT, PUNITIVE OR
 CONSEQUENTIAL DAMAGES, LOST PROFITS OR LOST DATA, COST OF PROCUREMENT OF
 SUBSTITUTE GOODS, TECHNOLOGY, SERVICES, OR ANY CLAIMS BY THIRD PARTIES
 (INCLUDING BUT NOT LIMITED TO ANY DEFENSE THEREOF), OR OTHER SIMILAR COSTS.
-*/
+ */
 
-#include "interrupt_manager.h"
-#include "mcc.h"
+/**
+  Section: Included Files
+ */
 
-void TMR2_CallBack( void);
+#include <xc.h>
+#include "fvr.h"
 
-void interrupt INTERRUPT_InterruptManager (void)
-{
-    // clear the TMR2 interrupt flag
-    PIR1bits.TMR2IF = 0;
+/**
+  Section: FVR APIs
+ */
 
-    TMR2_CallBack();    //  in AudioDAC.c
+void FVR_Initialize(void) {
+    // CDAFVR 1x; TSRNG Lo_range; TSEN disabled; FVREN enabled; FVRRDY disabled; ADFVR off; 
+    FVRCON = 0x84;
+}
+
+bool FVR_IsOutputReady(void) {
+    return (FVRCONbits.FVRRDY);
 }
 /**
  End of File
-*/
+ */
+

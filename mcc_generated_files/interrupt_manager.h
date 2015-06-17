@@ -8,20 +8,20 @@
     interrupt_manager.h
 
   @Summary:
-    This is the Interrupt Manager file generated using MPLAB® Code Configurator
+    This is the Interrupt Manager file generated using MPLABï¿½ Code Configurator
 
   @Description:
     This header file provides implementations for global interrupt handling.
     For individual peripheral handlers please see the peripheral driver for
     all modules selected in the GUI.
     Generation Information :
-        Product Revision  :  MPLAB® Code Configurator - v2.25
+        Product Revision  :  MPLABï¿½ Code Configurator - v2.25.1
         Device            :  PIC16F1709
         Driver Version    :  2.00
     The generated drivers are tested against the following:
         Compiler          :  XC8 v1.34
         MPLAB             :  MPLAB X v2.35 or v3.00
-*/
+ */
 
 /*
 Copyright (c) 2013 - 2015 released Microchip Technology Inc.  All rights reserved.
@@ -44,7 +44,7 @@ INCLUDING BUT NOT LIMITED TO ANY INCIDENTAL, SPECIAL, INDIRECT, PUNITIVE OR
 CONSEQUENTIAL DAMAGES, LOST PROFITS OR LOST DATA, COST OF PROCUREMENT OF
 SUBSTITUTE GOODS, TECHNOLOGY, SERVICES, OR ANY CLAIMS BY THIRD PARTIES
 (INCLUDING BUT NOT LIMITED TO ANY DEFENSE THEREOF), OR OTHER SIMILAR COSTS.
-*/
+ */
 
 #ifndef INTERRUPT_MANAGER_H
 #define INTERRUPT_MANAGER_H
@@ -113,4 +113,4 @@ void interrupt INTERRUPT_InterruptManager(void);
 #endif  // INTERRUPT_MANAGER_H
 /**
  End of File
-*/
+ */

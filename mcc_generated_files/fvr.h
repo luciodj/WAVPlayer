@@ -1,17 +1,17 @@
 /**
-  DAC Generated Driver File
+  FVR Generated Driver API Header File
 
   @Company
     Microchip Technology Inc.
 
   @File Name
-    dac.c
+    fvr.h
 
   @Summary
-    This is the generated driver implementation file for the DAC driver using MPLAB� Code Configurator
+    This is the generated header file for the FVR driver using MPLAB� Code Configurator
 
   @Description
-    This source file provides APIs for DAC.
+    This header file provides APIs for driver for FVR.
     Generation Information :
         Product Revision  :  MPLAB� Code Configurator - v2.25.1
         Device            :  PIC16F1709
@@ -44,27 +44,96 @@ SUBSTITUTE GOODS, TECHNOLOGY, SERVICES, OR ANY CLAIMS BY THIRD PARTIES
 (INCLUDING BUT NOT LIMITED TO ANY DEFENSE THEREOF), OR OTHER SIMILAR COSTS.
  */
 
+#ifndef _FVR_H
+#define _FVR_H
+
 /**
   Section: Included Files
  */
 
-#include <xc.h>
-#include "dac.h"
+#include <stdbool.h>
+#include <stdint.h>
 
-/**
-  Section: DAC APIs
- */
+#ifdef __cplusplus  // Provide C++ Compatibility
 
-void DAC_Initialize(void) {
-    // DAC1OE2 disabled; DAC1NSS VSS; DAC1OE1 disabled; DAC1PSS FVR; DAC1EN enabled; 
-    DAC1CON0 = 0x88;
-    // DAC1R 0x0; 
-    DAC1CON1 = 0x00;
+extern "C" {
+
+#endif
+
+    /**
+      Section: FVR APIs
+     */
+
+    /**
+      @Summary
+        Initializes the FVR
+
+      @Description
+        This routine initializes the FVR.
+        This routine must be called before any other FVR routine is called.
+        This routine should only be called once during system initialization.
+
+      @Preconditions
+        None
+
+      @Param
+        None
+
+      @Returns
+        None
+
+      @Comment
+    
+
+      @Example
+        <code>
+        FVR_Initialize();
+        </code>
+     */
+    void FVR_Initialize(void);
+
+    /**
+      @Summary
+        Gets the FVR output ready status.
+
+      @Description
+        This routine gets the FVR output ready status.
+
+      @Preconditions
+        The FVR_Initialize() routine should be called
+        prior to use this routine.
+
+      @Param
+        None
+
+      @Returns
+         true  - FVR module is ready for use.
+         false - FVR module is not ready for use.
+
+      @Example
+        <code>
+        FVR_Initialize();
+
+        if(FVR_IsOutputReady())
+        {
+              //user code
+        }
+        else
+        {
+              //user code
+        }
+        </code>
+     */
+    bool FVR_IsOutputReady(void);
+
+#ifdef __cplusplus  // Provide C++ Compatibility
+
 }
 
-void DAC_SetOutput(uint8_t inputData) {
-    DAC1CON1 = inputData;
-}
+#endif
+
+#endif // _FVR_H
 /**
  End of File
  */
+

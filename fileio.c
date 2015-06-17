@@ -858,7 +858,7 @@ unsigned freadM( char * dest, unsigned size, MFILE *fp)
 //
 unsigned fcloseM( MFILE *fp)
 {
-    unsigned e, r;
+    unsigned r;
 
     r = FAIL;
 
@@ -866,6 +866,8 @@ unsigned fcloseM( MFILE *fp)
     // 1. check if it was open for write
     if ( fp->mode == 'w')   
     {
+        unsigned e;
+        
         // 1.1 if the current buffer contains data, flush it
         if ( fp->pos >0)
         {   
@@ -874,7 +876,7 @@ unsigned fcloseM( MFILE *fp)
         } 
         
         // 1.2      finally update the dir entry, 
-        // 1.2.1    retrive the dir sector
+        // 1.2.1    retrieve the dir sector
         if ( !ReadDIR( fp, fp->entry))
             goto ExitClose;
     

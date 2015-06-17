@@ -1,27 +1,25 @@
 /**
-  Generated Interrupt Manager Source File
+  OPA2 Generated Driver API Header File
 
-  @Company:
+  @Company
     Microchip Technology Inc.
 
-  @File Name:
-    interrupt_manager.c
+  @File Name
+    opa2.h
 
-  @Summary:
-    This is the Interrupt Manager file generated using MPLAB� Code Configurator
+  @Summary
+    This is the generated header file for the OPA2 driver using MPLAB� Code Configurator
 
-  @Description:
-    This header file provides implementations for global interrupt handling.
-    For individual peripheral handlers please see the peripheral driver for
-    all modules selected in the GUI.
+  @Description
+    This header file provides APIs for driver for OPA2.
     Generation Information :
-        Product Revision  :  MPLAB� Code Configurator - v2.10.3
+        Product Revision  :  MPLAB� Code Configurator - v2.25.1
         Device            :  PIC16F1709
-        Driver Version    :  1.02
+        Driver Version    :  2.00
     The generated drivers are tested against the following:
         Compiler          :  XC8 v1.34
-        MPLAB             :  MPLAB X 2.26
-*/
+        MPLAB             :  MPLAB X v2.35 or v3.00
+ */
 
 /*
 Copyright (c) 2013 - 2015 released Microchip Technology Inc.  All rights reserved.
@@ -44,20 +42,64 @@ INCLUDING BUT NOT LIMITED TO ANY INCIDENTAL, SPECIAL, INDIRECT, PUNITIVE OR
 CONSEQUENTIAL DAMAGES, LOST PROFITS OR LOST DATA, COST OF PROCUREMENT OF
 SUBSTITUTE GOODS, TECHNOLOGY, SERVICES, OR ANY CLAIMS BY THIRD PARTIES
 (INCLUDING BUT NOT LIMITED TO ANY DEFENSE THEREOF), OR OTHER SIMILAR COSTS.
-*/
+ */
 
-#include "interrupt_manager.h"
-#include "mcc.h"
+#ifndef _OPA2_H
+#define _OPA2_H
 
-void TMR2_CallBack( void);
+/**
+  Section: Included Files
+ */
 
-void interrupt INTERRUPT_InterruptManager (void)
-{
-    // clear the TMR2 interrupt flag
-    PIR1bits.TMR2IF = 0;
+#include <stdbool.h>
+#include <stdint.h>
 
-    TMR2_CallBack();    //  in AudioDAC.c
+#ifdef __cplusplus  // Provide C++ Compatibility
+
+extern "C" {
+
+#endif
+
+    /**
+      Section: OPA2 APIs
+     */
+
+    /**
+      @Summary
+        Initializes the OPA2
+
+      @Description
+        This routine initializes the OPA2.
+        This routine must be called before any other OPA2 routine is called.
+        This routine should only be called once during system initialization.
+
+      @Preconditions
+        None
+
+      @Param
+        None
+
+      @Returns
+        None
+
+      @Comment
+        Buffers the DAC output to audio jack
+
+      @Example
+        <code>
+        OPA2_Initialize();
+        </code>
+     */
+    void OPA2_Initialize(void);
+
+#ifdef __cplusplus  // Provide C++ Compatibility
+
 }
+
+#endif
+
+#endif // _OPA2_H
 /**
  End of File
-*/
+ */
+

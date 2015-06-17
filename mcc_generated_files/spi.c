@@ -8,18 +8,18 @@
     mssp.c
 
   @Summary
-    This is the generated driver implementation file for the MSSP driver using MPLAB® Code Configurator
+    This is the generated driver implementation file for the MSSP driver using MPLABï¿½ Code Configurator
 
   @Description
     This source file provides APIs for MSSP.
     Generation Information :
-        Product Revision  :  MPLAB® Code Configurator - v2.25
+        Product Revision  :  MPLABï¿½ Code Configurator - v2.25.1
         Device            :  PIC16F1709
         Driver Version    :  2.00
     The generated drivers are tested against the following:
         Compiler          :  XC8 v1.34
         MPLAB             :  MPLAB X v2.35 or v3.00
-*/
+ */
 
 /*
 Copyright (c) 2013 - 2015 released Microchip Technology Inc.  All rights reserved.
@@ -42,94 +42,80 @@ INCLUDING BUT NOT LIMITED TO ANY INCIDENTAL, SPECIAL, INDIRECT, PUNITIVE OR
 CONSEQUENTIAL DAMAGES, LOST PROFITS OR LOST DATA, COST OF PROCUREMENT OF
 SUBSTITUTE GOODS, TECHNOLOGY, SERVICES, OR ANY CLAIMS BY THIRD PARTIES
 (INCLUDING BUT NOT LIMITED TO ANY DEFENSE THEREOF), OR OTHER SIMILAR COSTS.
-*/
+ */
 
 /**
   Section: Included Files
-*/
+ */
 
 #include <xc.h>
 #include "spi.h"
 
 /**
   Section: Macro Declarations
-*/
+ */
 
 #define SPI_RX_IN_PROGRESS 0x0
 
 /**
   Section: Module APIs
-*/
+ */
 
-void SPI_Initialize(void)
-{
+void SPI_Initialize(void) {
     // Set the SPI module to the options selected in the User Interface
-    
+
     // BF RCinprocess_TXcomplete; UA dontupdate; SMP Sample At Middle; P stopbit_notdetected; S startbit_notdetected; R_nW write_noTX; CKE Active to Idle; D_nA lastbyte_address; 
     SSP1STAT = 0x40;
-    
+
     // SSPEN enabled; WCOL no_collision; SSPOV no_overflow; CKP Idle:Low, Active:High; SSPM FOSC/4; 
     SSP1CON1 = 0x20;
-    
+
     // SSP1ADD 0; 
     SSP1ADD = 0x00;
 }
-void SPI_InitializeSlow(void)
-{
+
+void SPI_InitializeSlow(void) {
     // Set the SPI module to the options selected in the User Interface
-    
+
     // BF RCinprocess_TXcomplete; UA dontupdate; SMP Sample At Middle; P stopbit_notdetected; S startbit_notdetected; R_nW write_noTX; CKE Active to Idle; D_nA lastbyte_address; 
     SSP1STAT = 0x40;
-    
+
     // SSPEN enabled; WCOL no_collision; SSPOV no_overflow; CKP Idle:Low, Active:High; SSPM FOSC/4_SSPxADD; 
     SSP1CON1 = 0x2A;
-    
+
     // SSP1ADD 39; 
     SSP1ADD = 0x27;
 }
 
-uint8_t SPI_Exchange8bit(uint8_t data)
-{
+uint8_t SPI_Exchange8bit(uint8_t data) {
     // Clear the Write Collision flag, to allow writing
     SSP1CON1bits.WCOL = 0;
 
     SSPBUF = data;
 
-    while(SSP1STATbits.BF == SPI_RX_IN_PROGRESS)
-    {
+    while (SSP1STATbits.BF == SPI_RX_IN_PROGRESS) {
     }
 
     return (SSPBUF);
 }
 
-uint8_t SPI_Exchange8bitBuffer(uint8_t *dataIn, uint8_t bufLen, uint8_t *dataOut)
-{
+uint8_t SPI_Exchange8bitBuffer(uint8_t *dataIn, uint8_t bufLen, uint8_t *dataOut) {
     uint8_t bytesWritten = 0;
 
-    if(bufLen != 0)
-    {
-        if(dataIn != NULL)
-        {
-            while(bytesWritten < bufLen)
-            {
-                if(dataOut == NULL)
-                {
+    if (bufLen != 0) {
+        if (dataIn != NULL) {
+            while (bytesWritten < bufLen) {
+                if (dataOut == NULL) {
                     SPI_Exchange8bit(dataIn[bytesWritten]);
-                }
-                else
-                {
+                } else {
                     dataOut[bytesWritten] = SPI_Exchange8bit(dataIn[bytesWritten]);
                 }
 
                 bytesWritten++;
             }
-        }
-        else
-        {
-            if(dataOut != NULL)
-            {
-                while(bytesWritten < bufLen )
-                {
+        } else {
+            if (dataOut != NULL) {
+                while (bytesWritten < bufLen) {
                     dataOut[bytesWritten] = SPI_Exchange8bit(DUMMY_DATA);
 
                     bytesWritten++;
@@ -141,20 +127,17 @@ uint8_t SPI_Exchange8bitBuffer(uint8_t *dataIn, uint8_t bufLen, uint8_t *dataOut
     return bytesWritten;
 }
 
-bool SPI_IsBufferFull(void)
-{
+bool SPI_IsBufferFull(void) {
     return (SSP1STATbits.BF);
 }
 
-bool SPI_HasWriteCollisionOccured(void)
-{
+bool SPI_HasWriteCollisionOccured(void) {
     return (SSP1CON1bits.WCOL);
 }
 
-void SPI_ClearWriteCollisionStatus(void)
-{
+void SPI_ClearWriteCollisionStatus(void) {
     SSP1CON1bits.WCOL = 0;
 }
 /**
  End of File
-*/
+ */

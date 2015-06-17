@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<configuration device="PIC16F1709" mcc_version="v2.25">
+<configuration device="PIC16F1709" mcc_version="v2.25.1">
     <managers>
         <manager generated="true" name="Pin Manager" reloadPin="manual">
             <setting name="package" option="DIP20"/>
             <setting name="sorting" option="true"/>
-            <resource customName="DACOUT1" digital="false" direction="OUTPUT" function="DACOUT1" ioc="0" module="DAC" name="RA0" start="false" type="pin" wpu="false"/>
             <resource customName="SW1" digital="true" direction="INPUT" function="RA2" ioc="0" module="GPIO" name="RA2" start="false" type="pin" wpu="false"/>
             <resource customName="SDI" digital="true" direction="INPUT" function="SDI" ioc="0" module="MSSP" name="RB4" start="false" type="pin" wpu="false"/>
             <resource customName="SCK" digital="true" direction="BIDIRECTIONAL_OUTPUT" function="SCK" ioc="0" module="MSSP" name="RB6" start="false" type="pin" wpu="false"/>
@@ -14,15 +13,15 @@
             <resource customName="LED3" digital="true" direction="INPUT" function="RC3" ioc="0" module="GPIO" name="RC3" start="false" type="pin" wpu="false"/>
             <resource customName="CS" digital="true" direction="OUTPUT" function="RC4" ioc="0" module="GPIO" name="RC4" start="false" type="pin" wpu="false"/>
             <resource customName="SDO" digital="true" direction="OUTPUT" function="SDO" ioc="0" module="MSSP" name="RC7" start="false" type="pin" wpu="false"/>
-            <file checksum="3844998348" modified="false" name="pin_manager.c" path="mcc_generated_files/pin_manager.c"/>
-            <file checksum="651606219" modified="false" name="pin_manager.h" path="mcc_generated_files/pin_manager.h"/>
+            <file checksum="3964274332" modified="false" name="pin_manager.c" path="mcc_generated_files/pin_manager.c"/>
+            <file checksum="1115741770" modified="false" name="pin_manager.h" path="mcc_generated_files/pin_manager.h"/>
         </manager>
         <manager generated="true" name="Interrupt Manager" reloadPin="manual">
             <setting name="preemptHigh" option="true"/>
             <setting name="preemptLow" option="true"/>
             <setting name="useIPEN" option="false"/>
-            <file checksum="2803426049" modified="true" name="interrupt_manager.c" path="mcc_generated_files/interrupt_manager.c"/>
-            <file checksum="2010313938" modified="false" name="interrupt_manager.h" path="mcc_generated_files/interrupt_manager.h"/>
+            <file checksum="2365372261" modified="true" name="interrupt_manager.c" path="mcc_generated_files/interrupt_manager.c"/>
+            <file checksum="3555719435" modified="false" name="interrupt_manager.h" path="mcc_generated_files/interrupt_manager.h"/>
             <interrupt module="TMR2" name="TMRI" priority="2"/>
         </manager>
         <manager generated="true" name="System" reloadPin="manual">
@@ -60,8 +59,8 @@
             <setting name="PLLEN" option="ON"/>
             <setting name="BORV" option="LO"/>
             <setting name="generateConfigBits" option="true"/>
-            <file checksum="3874175607" modified="false" name="mcc.c" path="mcc_generated_files/mcc.c"/>
-            <file checksum="4019919705" modified="false" name="mcc.h" path="mcc_generated_files/mcc.h"/>
+            <file checksum="82332893" modified="false" name="mcc.c" path="mcc_generated_files/mcc.c"/>
+            <file checksum="265628709" modified="false" name="mcc.h" path="mcc_generated_files/mcc.h"/>
         </manager>
     </managers>
     <modules>
@@ -74,14 +73,14 @@
                 <setting name="TMR2" option="0x0" register="TMR2"/>
                 <additionalSetting name="ticker" option="0"/>
                 <additionalSetting name="timerstart" option="enabled"/>
-                <additionalSetting name="maxPeriodChanged" option="64.0 us"/>
-                <additionalSetting name="minPeriodChanged" option="250.0 ns"/>
-                <additionalSetting name="period" option="0.0 ns"/>
+                <additionalSetting name="maxPeriodChanged" option="32.0 us"/>
+                <additionalSetting name="minPeriodChanged" option="125.0 ns"/>
+                <additionalSetting name="period" option="22.5 us"/>
             </initializer>
             <setting name="TMRI" option="true"/>
             <setting name="ticker" option="0"/>
-            <file checksum="3710549894" modified="false" name="tmr2.c" path="mcc_generated_files/tmr2.c"/>
-            <file checksum="3375971833" modified="false" name="tmr2.h" path="mcc_generated_files/tmr2.h"/>
+            <file checksum="1789886334" modified="false" name="tmr2.c" path="mcc_generated_files/tmr2.c"/>
+            <file checksum="2297794454" modified="false" name="tmr2.h" path="mcc_generated_files/tmr2.h"/>
         </module>
         <module generated="true" mode="GPIO" name="GPIO" order="1" reloadPin="manual" type="GPIO">
             <resource customName="LED0" digital="true" direction="OUTPUT" function="RC0" ioc="0" module="GPIO" name="RC0" start="false" type="pin" wpu="false"/>
@@ -131,20 +130,42 @@
             <setting name="BCLI" option="false"/>
             <setting name="WriteBufferSize" option="8"/>
             <setting name="ReadBufferSize" option="8"/>
-            <file checksum="3374905014" modified="false" name="spi.c" path="mcc_generated_files/spi.c"/>
-            <file checksum="1061135425" modified="false" name="spi.h" path="mcc_generated_files/spi.h"/>
+            <file checksum="414966947" modified="false" name="spi.c" path="mcc_generated_files/spi.c"/>
+            <file checksum="796979320" modified="false" name="spi.h" path="mcc_generated_files/spi.h"/>
+        </module>
+        <module generated="true" mode="FVR" name="FVR" order="5" reloadPin="manual" type="vref_bandgap_0buf">
+            <initializer comment="" name="Initialize">
+                <setting name="CDAFVR" option="1x" register="FVRCON"/>
+                <setting name="TSEN" option="disabled" register="FVRCON"/>
+                <setting name="TSRNG" option="Lo_range" register="FVRCON"/>
+                <setting name="FVREN" option="enabled" register="FVRCON"/>
+                <setting name="FVRRDY" option="disabled" register="FVRCON"/>
+                <setting name="ADFVR" option="off" register="FVRCON"/>
+            </initializer>
+            <file checksum="2151060264" modified="false" name="fvr.c" path="mcc_generated_files/fvr.c"/>
+            <file checksum="1831061987" modified="false" name="fvr.h" path="mcc_generated_files/fvr.h"/>
         </module>
         <module generated="true" mode="DAC" name="DAC" order="3" reloadPin="auto" type="dac_8bit">
-            <initializer comment="Use the DACOUT1 (RA0) to output 8-bit audio samples" name="Initialize">
+            <initializer comment="receives 8-bit audio samples, outputs to OPA2" name="Initialize">
                 <setting name="DAC1OE2" option="disabled" register="DAC1CON0"/>
-                <setting name="DAC1OE1" option="enabled" register="DAC1CON0"/>
+                <setting name="DAC1OE1" option="disabled" register="DAC1CON0"/>
                 <setting name="DAC1NSS" option="VSS" register="DAC1CON0"/>
-                <setting name="DAC1PSS" option="VDD" register="DAC1CON0"/>
+                <setting name="DAC1PSS" option="FVR" register="DAC1CON0"/>
                 <setting name="DAC1EN" option="enabled" register="DAC1CON0"/>
                 <setting name="DAC1R" option="0x0" register="DAC1CON1"/>
             </initializer>
-            <file checksum="1314100400" modified="false" name="dac.c" path="mcc_generated_files/dac.c"/>
-            <file checksum="3760441784" modified="false" name="dac.h" path="mcc_generated_files/dac.h"/>
+            <file checksum="3784283930" modified="false" name="dac.c" path="mcc_generated_files/dac.c"/>
+            <file checksum="4251705402" modified="false" name="dac.h" path="mcc_generated_files/dac.h"/>
+        </module>
+        <module generated="true" mode="OPA" name="OPA2" order="4" reloadPin="manual" type="amp_opamp_hvpump">
+            <initializer comment="Buffers the DAC output to audio jack" name="Initialize">
+                <setting name="OPA2UG" option="OPA_Output" register="OPA2CON"/>
+                <setting name="OPA2SP" option="High_GBWP_mode" register="OPA2CON"/>
+                <setting name="OPA2PCH" option="DAC" register="OPA2CON"/>
+                <setting name="OPA2EN" option="enabled" register="OPA2CON"/>
+            </initializer>
+            <file checksum="2241165875" modified="false" name="opa2.c" path="mcc_generated_files/opa2.c"/>
+            <file checksum="3447860371" modified="false" name="opa2.h" path="mcc_generated_files/opa2.h"/>
         </module>
     </modules>
 </configuration>
