@@ -27,5 +27,5 @@ Need:
 * Check the [Simplicity](https://github.com/luciodj/Simplicity) project for more demo like this using the MPLAB Code Configurator and the MikroElektronika Click(tm) boards.
 
 ## Linked projects
-* Porting to MPLAB Xpress evaluation board (PIC16F18855)[link] (https://github.com/luciodj/In10LinesOfCodeExtra/tree/master/19-XPRESS-Player.X)
-* Translation in Assembly for the Hackaday 2016 1K byte code competition [link](https://github.com/luciodj/WAV-1K)
+* [Porting to MPLAB Xpress evaluation board (PIC16F18855)] (https://github.com/luciodj/In10LinesOfCodeExtra/tree/master/19-XPRESS-Player.X)
+* [Translation in Assembly for the Hackaday 2016 1K byte code competition] (https://github.com/luciodj/WAV-1K)
